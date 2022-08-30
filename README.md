@@ -17,7 +17,7 @@ npm i
 ```
 that's it
 
-# How to start the shi
+# How to start the shi, because x3
 just do
 ```
 npm start
