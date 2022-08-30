@@ -24,4 +24,4 @@ npm start
 ```
 to exit, just do `CTRL + C`
 
-anything else just ask me
+anything else just ask me.
