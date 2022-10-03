@@ -104,33 +104,17 @@ function Main() {
 
     return (
         // put your html code inside this div
-<<<<<<< HEAD
-        <div className='home'>
-            <div className='container homeContainer'>
-                <img src={logoImg} className='logo'></img>
-                <h1 className='title'>KaQuizz!</h1>
-                <form>
-                    <input type="text" name="game-code" placeholder="Input Game Code" />
-                    <button type="button" class="violet-btn" onClick={() => setMode('join')}>Join Lobby</button>
-                    <hr></hr>
-                    <button type="button" class="red-btn" onClick={() => setMode('create')}>Create Lobby</button>
-                </form>
-            </div>
-=======
-
-
             {/* add your layout here */
-                <div className=''>
-                    <div className='container homeContainer'>
-                        <img src={logoImg} className='logo'></img>
-                        <h1 className='title'>KaQuizz!</h1>
-                        <form>
-                            <input type="text" name="game-code" placeholder="Input Game Code" />
-                            <button type="button" class="violet-btn" onClick={() => setMode('join')}>Join Lobby</button>
-                            <hr></hr>
-                            <button type="button" class="red-btn" onClick={() => setMode('create')}>Create Lobby</button>
-                        </form>
-                    </div>
+                <div className='container homeContainer'>
+                    <img src={logoImg} className='logo'></img>
+                    <h1 className='title'>KaQuizz!</h1>
+                    <form>
+                        <input type="text" name="game-code" placeholder="Input Game Code" />
+                        <button type="button" class="violet-btn" onClick={() => setMode('join')}>Join Lobby</button>
+                        <hr></hr>
+                        <button type="button" class="red-btn" onClick={() => setMode('create')}>Create Lobby</button>
+                    </form>
+                </div>
             }
             
             <Router>
@@ -139,8 +123,6 @@ function Main() {
                     <Route exact path='/quiz' element={ <Quiz /> } />
                 </Routes>
             </Router>
->>>>>>> e78de49eec92c52c1a1b631eba93df5004138fc1
-        </div>
 
         // i used these for testing purposes as well
         // <div className='container shadow rounded p-4'>
