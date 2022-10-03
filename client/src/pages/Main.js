@@ -100,18 +100,15 @@ function Main() {
     //     }
     // }
 
-    
-
     return (
-        // put your html code inside this div
-           
-            
             <Router>
                 <Routes>
                     <Route exact path='/lobby' element={ <Lobby /> } />
+                    <Route exact path='/join-lobby' element={ <JoinLobby /> } />
                     <Route exact path='/quiz' element={ <Quiz /> } />
                 </Routes>
             </Router>
+
 
         // i used these for testing purposes as well
         // <div className='container shadow rounded p-4'>

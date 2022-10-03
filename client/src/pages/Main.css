@@ -1,6 +1,62 @@
 body {
-    background-image: url(.././images/Background.png)
+    height: 100vh;
+    background-image: url(.././images/Background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+/* ----------------------------------------
+ *  REUSABLE STYLES
+ * ---------------------------------------- */
+
+.logo {
+    height: 100%;
+}
+
+.title {
+    margin-bottom: 40px;
+}
+
+button {
+    width: 100%;
+}
+
+.exitButton {
+    background-color: var(--yellow-color);
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px 24px 12px 32px;
+    border-radius: 0 40px 40px 0;
+    position: absolute;
+    top: 32px;
+}
+
+.chatLobbyBtn {
+    font-size: 1.2em;
+    line-height: 0;
+    background-color: var(--yellow-color);
+    color: var(--white-color);
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px 24px 12px 24px;
+    border-radius: 24px 0 0 24px;
+    position: absolute;
+    right: 0;
+    bottom: 24px;
+}
+
+
+/* ----------------------------------------
+ *  HOMEPAGE
+ * ---------------------------------------- */
 
 .home {
     height: 100vh;
@@ -18,15 +74,95 @@ body {
     border-radius: 20px;
 }
 
-.logo {
-    height: 100%;
+.homeContainer .logo {
     width: 250px;
 }
 
-.title {
-    margin-bottom: 40px;
+/* ----------------------------------------
+ *  GAME LOBBY
+ * ---------------------------------------- */
+
+.joinLobby {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.lobbyInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    padding: 24px 50px;
+    border-radius: 20px;
+    gap: 8px;
+    margin-top: 32px;
 }
 
-button {
-    width: 100%;
+.gameCodeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    background-color: var(--violet-color);
+    padding: 18px 64px;
+    border-radius: 24px;
+    color: #fff;
 }
+
+.lobbyInfoContainer .logo {
+    width: 150px;
+}
+
+.playersContainer {
+    flex: 1;
+    height: 100%;
+    margin: 12px 64px 64px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+}
+
+.playerCard {
+    background-color: var(--white-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.userImg {
+    height: 60px;
+}
+
+.lobbyDivider {
+    background-color: var(--white-color);
+    height: 2px;
+    margin: 32px 0;
+}
+
+.numPlayers {
+    background-color: var(--white-color);
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 24px;
+    border-radius: 24px;
+    position: relative;
+    top: -24px;
+    left: 64px;
+    gap: 6px;
+    line-height: 0px;
+}
+
+.currentPlayer {
+    line-height: 0px;
+    background-color: var(--violet-color);
+    color: var(--white-color);
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
