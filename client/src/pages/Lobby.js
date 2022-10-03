@@ -13,7 +13,7 @@ export default function Lobby(props) {
     console.log(players); // for testing
     return (
         <div className=''>
-
+            Lobby
         </div>
 
         // written below is how i've imported a player card element per data received from the server

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // import the css here
 import './Main.css';
@@ -10,6 +11,7 @@ import './Main.css';
 import CreateLobby from './CreateLobby';
 import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
+import Quiz from './Quiz'
 
 // socket.io is for the websocket connection implementation
 // i've commented these for now so that your side doesn't error out if the server is running or not
@@ -102,6 +104,7 @@ function Main() {
 
     return (
         // put your html code inside this div
+<<<<<<< HEAD
         <div className='home'>
             <div className='container homeContainer'>
                 <img src={logoImg} className='logo'></img>
@@ -113,6 +116,30 @@ function Main() {
                     <button type="button" class="red-btn" onClick={() => setMode('create')}>Create Lobby</button>
                 </form>
             </div>
+=======
+
+
+            {/* add your layout here */
+                <div className=''>
+                    <div className='container homeContainer'>
+                        <img src={logoImg} className='logo'></img>
+                        <h1 className='title'>KaQuizz!</h1>
+                        <form>
+                            <input type="text" name="game-code" placeholder="Input Game Code" />
+                            <button type="button" class="violet-btn" onClick={() => setMode('join')}>Join Lobby</button>
+                            <hr></hr>
+                            <button type="button" class="red-btn" onClick={() => setMode('create')}>Create Lobby</button>
+                        </form>
+                    </div>
+            }
+            
+            <Router>
+                <Routes>
+                    <Route exact path='/lobby' element={ <Lobby /> } />
+                    <Route exact path='/quiz' element={ <Quiz /> } />
+                </Routes>
+            </Router>
+>>>>>>> e78de49eec92c52c1a1b631eba93df5004138fc1
         </div>
 
         // i used these for testing purposes as well
