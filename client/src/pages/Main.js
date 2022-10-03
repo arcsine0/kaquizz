@@ -104,18 +104,7 @@ function Main() {
 
     return (
         // put your html code inside this div
-            {/* add your layout here */
-                <div className='container homeContainer'>
-                    <img src={logoImg} className='logo'></img>
-                    <h1 className='title'>KaQuizz!</h1>
-                    <form>
-                        <input type="text" name="game-code" placeholder="Input Game Code" />
-                        <button type="button" class="violet-btn" onClick={() => setMode('join')}>Join Lobby</button>
-                        <hr></hr>
-                        <button type="button" class="red-btn" onClick={() => setMode('create')}>Create Lobby</button>
-                    </form>
-                </div>
-            }
+           
             
             <Router>
                 <Routes>
