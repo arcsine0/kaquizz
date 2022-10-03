@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // import the css here
 import './Main.css';
@@ -10,6 +11,7 @@ import './Main.css';
 import CreateLobby from './CreateLobby';
 import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
+import Quiz from './Quiz'
 
 // socket.io is for the websocket connection implementation
 // i've commented these for now so that your side doesn't error out if the server is running or not
@@ -100,6 +102,12 @@ function Main() {
         // put your html code inside this div
         <div className=''>
             {/* add your layout here */}
+            <Router>
+                <Routes>
+                    <Route exact path='/lobby' element={ <Lobby /> } />
+                    <Route exact path='/quiz' element={ <Quiz /> } />
+                </Routes>
+            </Router>
         </div>
 
         // i used these for testing purposes as well
