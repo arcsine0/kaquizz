@@ -18,6 +18,8 @@ import Lobby from './Lobby';
 //   withCredentials: true
 // });
 
+import logoImg from '.././images/Logo.png';
+
 function Main() {
     // these are all the useState hooks / react variables that can be changed at any time using their respective set callbacks
     // i.e to set username, setUserName(value) 
@@ -96,10 +98,21 @@ function Main() {
     //     }
     // }
 
+    
+
     return (
         // put your html code inside this div
-        <div className=''>
-            {/* add your layout here */}
+        <div className='home'>
+            <div className='container homeContainer'>
+                <img src={logoImg} className='logo'></img>
+                <h1 className='title'>KaQuizz!</h1>
+                <form>
+                    <input type="text" name="game-code" placeholder="Input Game Code" />
+                    <button type="button" class="violet-btn" onClick={() => setMode('join')}>Join Lobby</button>
+                    <hr></hr>
+                    <button type="button" class="red-btn" onClick={() => setMode('create')}>Create Lobby</button>
+                </form>
+            </div>
         </div>
 
         // i used these for testing purposes as well
