@@ -1,22 +1,30 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // you can also import individual css files here
 // import './filename.css'
+
+import PlayerCard from '../elements/PlayerCard'
 
 import './Main.css'
 
 import logoImg from '../images/Logo.png'
 import defaultUserImg from '../images/profile-user.svg'
 
-export default function JoinLobby({submitID}) {
+export default function JoinLobby(props) {
     // state hooks
     const [inputID, setInputID] = useState('')
     const [userName, setUserName] = useState('')
 
+    var players = props.players
+    var code = props.code
+
+    const navigate = useNavigate()
+
     return (
         <div className='joinLobby'>
             <div className='exitButton'>
-                <i class="ri-logout-box-line large-icon white-icon"></i>
+                <i class="ri-logout-box-line large-icon white-icon" onClick={() => { navigate('/') }}></i>
             </div>
 
             <div className='container lobbyInfoContainer'>
@@ -25,19 +33,22 @@ export default function JoinLobby({submitID}) {
 
                 <div className="gameCodeContainer">
                     <h3>GAME CODE</h3>
-                    <input type="text" id="gameCode" value="123456" readonly></input>
+                    <input type="text" id="gameCode" value={code} readonly></input>
                 </div>
             </div>
 
             <div className='lobbyDivider'>
                 <div className="numPlayers">
                     <i class="ri-group-fill small-icon"></i>
-                    <h4>8</h4>
+                    <h4>{players.length}</h4>
                 </div>
             </div>
 
             <div className='playersContainer'>
-                <div className='playerCard'>
+                {players.map((element, i) => {
+                    return (<PlayerCard name={element.username}/>)
+                })}
+                {/* <div className='playerCard'>
                     <div className='playerInfo'>
                         <h4 className="playerName">Player 1</h4>
                         <p><span className="currentPlayer">You</span></p>
@@ -50,7 +61,8 @@ export default function JoinLobby({submitID}) {
                         <h4 className="playerName">Player 2</h4>
                     </div>
                     <img src={defaultUserImg} className='userImg'></img>
-                </div>           
+                </div>            */}
+
             </div>
 
             <div className='chatLobbyBtn'>

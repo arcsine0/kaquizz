@@ -79,9 +79,17 @@ io.on('connection', (socket) => {
     });
 
 
-    socket.on('disconnect', () => {
+    socket.on('disconnect', async (data) => {
         console.log(`user ${socket.id} has disconnected`);
         socket.leave(roomID)
+
+        var allData = []
+        var roomClients = await io.in(data.id).fetchSockets()
+        roomClients.forEach((s, index) => {
+            allData.push(s.data);
+        })
+
+        io.sockets.emit('userData', allData)
     });
 });
 

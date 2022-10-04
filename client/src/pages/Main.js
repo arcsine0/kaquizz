@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 // import the css here
 import './Main.css';
@@ -13,25 +13,19 @@ import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
 import Quiz from './Quiz'
 
-// socket.io is for the websocket connection implementation
-// i've commented these for now so that your side doesn't error out if the server is running or not
-// const io = require('socket.io-client');
-// const socket = io.connect('http://localhost:4000', {
-//   withCredentials: true
-// });
-
 import logoImg from '.././images/Logo.png';
 
-function Main() {
-    // these are all the useState hooks / react variables that can be changed at any time using their respective set callbacks
-    // i.e to set username, setUserName(value) 
+// socket.io is for the websocket connection implementation
+// i've commented these for now so that your side doesn't error out if the server is running or not
+const io = require('socket.io-client');
+const socket = io.connect('http://localhost:4000', {
+  withCredentials: true
+});
 
-    // don't touch this roomID one, the value is set from the server randomly per session
+function Main() {
+
     const [roomID, setRoomID] = useState(null);
 
-    // you can either use these or make new state hooks to set and test your react components
-    // to make a new state hook do:
-    // const [name, set callback] = useState(default value or null)
     const [inputID, setInputID] = useState('');
     const [userName, setUserName] = useState('');
 
@@ -41,38 +35,43 @@ function Main() {
     // this state hook is for receiving all player data inside the room from the server
     const [playersList, setPlayersList] = useState([]);
 
-    // these are all for socket / user connections to the server
-    // commented out because socket is defined if server is running
-    // don't edit please
-    // socket.on('connect', () => {
-    //     console.log('connected to server!');
-    // })
+    const navigate = useNavigate()
+
+    socket.on('connect', () => {
+        console.log('connected to server!');
+    })
       
-    // socket.on('UID', (id) => {
-    //   setRoomID(id)
-    // })
+    socket.on('UID', (id) => {
+        setRoomID(id)
+    })
 
-    // socket.on('userData', (data) => {
-    //     setPlayersList(data);
-    // })
+    socket.on('userData', (data) => {
+        setPlayersList(data);
+    })
     
-    // they handle the joining and creating rooms, i'll change them eventually as needed
+    // these handle the joining and creating rooms, i'll change them eventually as needed
     // commented out because socket is defined if server is running
     // don't edit please
-    // function join(name, id) {
-    //     setUserName(name);
-    //     setInputID(id);
-    //     if (inputID !== '') {
-    //         socket.emit('join', {'name': userName, 'id': inputID})
-    //     }
-    // }
 
-    // function create(name) {
-    //     setUserName(name);
-    //     if (userName !== '') {
-    //         socket.emit('create', userName)
-    //     }
-    // }
+    function join(name, id) {
+        setUserName(name);
+        setInputID(id);
+        
+        if (id !== undefined) {
+            if (id !== '') {
+                console.log('joining lobby...')
+                socket.emit('join', {'name': name, 'id': id})
+                setRoomID(id)
+            }
+        } else {
+            if (name !== '') {
+                console.log('creating lobby...')
+                socket.emit('create', name)
+            }
+        }
+
+        navigate('/lobby')
+    }
 
     // i used these for testing purposes
     // function Mode(props) {
@@ -101,13 +100,12 @@ function Main() {
     // }
 
     return (
-            <Router>
-                <Routes>
-                    <Route exact path='/lobby' element={ <Lobby /> } />
-                    <Route exact path='/join-lobby' element={ <JoinLobby /> } />
-                    <Route exact path='/quiz' element={ <Quiz /> } />
-                </Routes>
-            </Router>
+
+        <Routes>
+            <Route exact path='/' element={<Lobby toLobby={(name, id) => join(name, id)} />} />
+            <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} />} />
+            <Route exact path='/quiz' element={<Quiz />} />
+        </Routes>
 
 
         // i used these for testing purposes as well
