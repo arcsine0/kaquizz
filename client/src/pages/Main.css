@@ -5,6 +5,13 @@ body {
     background-size: cover;
 }
 
+.quiz {
+    height: 100vh;
+    background-image: url(.././images/Background2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* ----------------------------------------
  *  REUSABLE STYLES
  * ---------------------------------------- */
@@ -53,6 +60,16 @@ button {
     bottom: 24px;
 }
 
+.centerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.centerContainer h1 {
+    font-size: 5.4rem;
+}
 
 /* ----------------------------------------
  *  HOMEPAGE
@@ -166,3 +183,90 @@ button {
     border-radius: 20px;
 }
 
+/* ----------------------------------------
+ *  QUESTION
+ * ---------------------------------------- */
+
+.questionContainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.timerContainer {
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+}
+
+.timerContainer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.timerContainer .logo {
+    height: 70px;
+}
+
+.timerContainer .questionsNum {
+    background-color: #f3f3f3;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+
+.timer {
+    height: 40px;
+    min-width: 600px;
+    width: 70%;
+    background-color: #f3f3f3;
+    border-radius: 200px;
+}
+
+.placementContainer {
+    background-color: var(--yellow-color);
+    color: white;
+    padding: 0 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question {
+    background-color: #181845;
+    color: white;
+    max-height: 150px;
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 64px;
+}
+
+.question h3 {
+    text-align: center;
+}
+
+.choices {
+    flex: 1;
+    height: 100%;
+    margin: 12px 64px 64px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+}
+
+.choiceCard {
+    color: white; 
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}

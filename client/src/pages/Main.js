@@ -11,7 +11,8 @@ import './Main.css';
 import CreateLobby from './CreateLobby';
 import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
-import Quiz from './Quiz'
+import Quiz from './Quiz';
+import QuizQuestion from './QuizQuestion';
 
 import logoImg from '.././images/Logo.png';
 
@@ -105,6 +106,7 @@ function Main() {
             <Route exact path='/' element={<Lobby toLobby={(name, id) => join(name, id)} />} />
             <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} />} />
             <Route exact path='/quiz' element={<Quiz />} />
+            <Route exact path='/quiz-question' element={<QuizQuestion />} />
         </Routes>
 
 
