@@ -13,6 +13,7 @@ import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
 import Quiz from './Quiz';
 import QuizQuestion from './QuizQuestion';
+import RoundPlacement from './RoundPlacement';
 
 import logoImg from '.././images/Logo.png';
 
@@ -107,6 +108,7 @@ function Main() {
             <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} />} />
             <Route exact path='/quiz' element={<Quiz />} />
             <Route exact path='/quiz-question' element={<QuizQuestion />} />
+            <Route exact path='/placement' element={<RoundPlacement />} />
         </Routes>
 
 

@@ -184,14 +184,8 @@ button {
 }
 
 /* ----------------------------------------
- *  QUESTION
+ *  TIMER
  * ---------------------------------------- */
-
-.questionContainer {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
 
 .timerContainer {
     background-color: var(--white-color);
@@ -226,7 +220,17 @@ button {
     border-radius: 200px;
 }
 
-.placementContainer {
+/* ----------------------------------------
+ *  QUESTION
+ * ---------------------------------------- */
+
+.questionContainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.currentPlacement {
     background-color: var(--yellow-color);
     color: white;
     padding: 0 12px;
@@ -239,13 +243,13 @@ button {
 .question {
     background-color: #181845;
     color: white;
-    max-height: 150px;
+    max-height: 200px;
     margin: 0 auto;
     width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 64px;
+    padding: 64px 32px;
 }
 
 .question h3 {
@@ -269,4 +273,24 @@ button {
     align-items: center;
     justify-content: space-between;
     padding: 16px;
+}
+
+/* ----------------------------------------
+ *  ROUND PLACEMENT
+ * ---------------------------------------- */
+
+.roundPlacement h3 {
+    background-color: #181845;
+    color: white;
+    max-height: 200px;
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 64px 32px;
+}
+
+.placementContainer {
+    background-color: var(--white-color);
 }

@@ -21,6 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1em;
   font-weight: 600;
+  height: 100vh;
   /* overflow: hidden; */
 }
 

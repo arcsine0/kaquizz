@@ -23,7 +23,7 @@ export default function QuizQuestion() {
                 </div>
                 
                 <div className="timer"></div>
-                <div className="placementContainer">
+                <div className="currentPlacement">
                     <i class="ri-medal-line large-icon"></i>
                     <h4 className="placement">1st</h4>
                 </div>
