@@ -41,7 +41,7 @@ function Main() {
     var sessionData = {"timer": 10, "questions": ["What is 1+1?", "How stupid am I?", "What the Huh?"], "choices": [["2", "11", "idk", "none of the above"], ["Yes", "No", "Maybe", "A Little"], ["Indeed", "I know right", "Yup", "True"]], "answers": ["2", "Yes", "I know right"]}
     sessionStorage.setItem('sessionData', JSON.stringify(sessionData))
 
-    var scores = [{}]
+    var scores = [["player1", 1000], ["player2", 2000], ["player3", 50]]
     sessionStorage.setItem('scores', JSON.stringify(scores))
 
     // this state hook is for receiving all player data inside the room from the server
@@ -123,7 +123,7 @@ function Main() {
             <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} start={() => start()} />} />
             <Route exact path='/editor' element={<Editor />} />
             <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} />} />
-            <Route exact path='/placement' element={<RoundPlacement next={() => nextQuestion()} />} />
+            <Route exact path='/placement' element={<RoundPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
         </Routes>
 
     )
