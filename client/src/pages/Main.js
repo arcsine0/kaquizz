@@ -11,6 +11,7 @@ import './Main.css';
 import CreateLobby from './CreateLobby';
 import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
+import Editor from './Editor';
 import Quiz from './Quiz'
 
 import logoImg from '.././images/Logo.png';
@@ -31,6 +32,10 @@ function Main() {
 
     // i made this one for testing purposes, don't mind
     // const [mode, setMode] = useState('create');
+
+    // test data
+    var sessionData = {"timer": 10, "questions": ["What is 1+1?", "How stupid am I?", "What the Fuck?"], "choices": [["2", "11", "idk", "none of the above"], ["Yes", "No", "Maybe", "A Little"], ["Indeed", "I know right", "Fuck you too", "True"]], "answers": ["2", "Yes", "I know right"]}
+    localStorage.setItem('sessionData', JSON.stringify(sessionData))
 
     // this state hook is for receiving all player data inside the room from the server
     const [playersList, setPlayersList] = useState([]);
@@ -60,17 +65,21 @@ function Main() {
         if (id !== undefined) {
             if (id !== '') {
                 console.log('joining lobby...')
-                socket.emit('join', {'name': name, 'id': id})
+                socket.emit('join', {'name': name, 'id': id, 'role': "player"})
                 setRoomID(id)
             }
         } else {
             if (name !== '') {
                 console.log('creating lobby...')
-                socket.emit('create', name)
+                socket.emit('create', {'name': name, 'role': "host"})
             }
         }
 
         navigate('/lobby')
+    }
+
+    function submitAnswer(score) {
+        socket.emit('answered', {'id': inputID, 'score': score})
     }
 
     // i used these for testing purposes
@@ -104,7 +113,8 @@ function Main() {
         <Routes>
             <Route exact path='/' element={<Lobby toLobby={(name, id) => join(name, id)} />} />
             <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} />} />
-            <Route exact path='/quiz' element={<Quiz />} />
+            <Route exact path='/editor' element={<Editor />} />
+            <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} />} />
         </Routes>
 
 

@@ -41,10 +41,11 @@ io.on('connection', (socket) => {
     var roomID = nanoid(6)
     socket.emit('UID', roomID)
 
-    socket.on('create', async (name) => {
+    socket.on('create', async (data) => {
         console.log(`${socket.id} is creating lobby_${roomID}`);
-        socket.data.username = name;
+        socket.data.username = data.name;
         socket.data.id = socket.id
+        socket.data.role = data.role
 
         socket.join(roomID)
 
@@ -61,6 +62,7 @@ io.on('connection', (socket) => {
     socket.on('join', async (data) => {
         socket.data.username = data.name
         socket.data.id = socket.id
+        socket.data.role = data.role
         
         socket.join(data.id)
         if (socket.rooms.has(data.id)) {
@@ -78,13 +80,16 @@ io.on('connection', (socket) => {
         }
     });
 
+    socket.on('answered', (data) => {
+        socket.data.score = data.score
+    })
 
-    socket.on('disconnect', async (data) => {
+    socket.on('disconnect', async () => {
         console.log(`user ${socket.id} has disconnected`);
         socket.leave(roomID)
 
         var allData = []
-        var roomClients = await io.in(data.id).fetchSockets()
+        var roomClients = await io.in(socket.data.id).fetchSockets()
         roomClients.forEach((s, index) => {
             allData.push(s.data);
         })
