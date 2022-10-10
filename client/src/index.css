@@ -44,7 +44,7 @@ code {
     monospace;
 }
 
-input {
+input, select {
   width: 100%;
   padding: 12px;
   margin: 8px 0;
@@ -52,6 +52,19 @@ input {
   border: 2px solid var(--border-color);
   border-radius: 12px;
   font-size: 1.2em;
+}
+
+select {
+  padding: 6px;
+  font-size: 1em;
+  margin: 0;
+}
+
+label {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .container {
@@ -103,6 +116,12 @@ button {
 .large-icon {
   font-size: 2.2em;
   display: block;
+}
+
+.smaller-icon {
+  font-size: 1.2em;
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .small-icon {

@@ -456,6 +456,7 @@ button {
     font-size: 0.9rem;
     overflow: hidden;
     color: var(--border-color);
+    padding: 16px 0;
 }
 
 .quizSettings h3:after {
@@ -469,5 +470,7 @@ button {
     border-top: 2px solid var(--border-color);
 }
 
-
+.setting {
+    padding-bottom: 12px;
+}
 
