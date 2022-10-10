@@ -84,43 +84,50 @@ export default function Editor() {
                     </div>
                 </div>
                 <div className='col-2 quizSettings'>
-                    <h3><span>Question Settings</span></h3>
-                    <div className='setting'>
-                        <label>
-                            <i class="ri-question-fill smaller-icon"></i>     
-                            <p>Question Type:</p>
-                        </label>
-                        <select>
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option value="coconut">Coconut</option>
-                            <option value="mango">Mango</option>
-                        </select>
+                    <div>
+                        <h3><span>Question Settings</span></h3>
+                        <div className='setting'>
+                            <label>
+                                <i class="ri-question-fill smaller-icon"></i>     
+                                <p>Question Type:</p>
+                            </label>
+                            <select>
+                                <option value="grapefruit">Grapefruit</option>
+                                <option value="lime">Lime</option>
+                                <option value="coconut">Coconut</option>
+                                <option value="mango">Mango</option>
+                            </select>
+                        </div>
+                        <div className='setting'>
+                            <label>
+                                <i class="ri-checkbox-circle-fill smaller-icon"></i>     
+                                <p>Correct Answer:</p>
+                            </label>
+                            <select>
+                                <option value="grapefruit">Grapefruit</option>
+                                <option value="lime">Lime</option>
+                                <option value="coconut">Coconut</option>
+                                <option value="mango">Mango</option>
+                            </select>
+                        </div>
+                        <h3><span>Quiz Settings</span></h3>
+                        <div className='setting'>
+                            <label>
+                                <i class="ri-time-fill smaller-icon"></i>     
+                                <p>Time Limit:</p>
+                            </label>
+                            <select>
+                                <option value="grapefruit">Grapefruit</option>
+                                <option value="lime">Lime</option>
+                                <option value="coconut">Coconut</option>
+                                <option value="mango">Mango</option>
+                            </select>
+                        </div>
                     </div>
-                    <div className='setting'>
-                        <label>
-                            <i class="ri-checkbox-circle-fill smaller-icon"></i>     
-                            <p>Correct Answer:</p>
-                        </label>
-                        <select>
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option value="coconut">Coconut</option>
-                            <option value="mango">Mango</option>
-                        </select>
-                    </div>
-                    <h3><span>Quiz Settings</span></h3>
-                    <div className='setting'>
-                        <label>
-                            <i class="ri-time-fill smaller-icon"></i>     
-                            <p>Time Limit:</p>
-                        </label>
-                        <select>
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option value="coconut">Coconut</option>
-                            <option value="mango">Mango</option>
-                        </select>
+                    
+                    <div className="quizSettingsButtons">
+                        <button type="button" className="red-btn">Delete</button>
+                        <button type="button" className="violet-btn">Duplicate</button>
                     </div>
                 </div>
             </div>
