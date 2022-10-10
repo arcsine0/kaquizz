@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // import css here
 import './Main.css'
@@ -9,6 +10,7 @@ import { PlacementTable } from '../elements/PlacementTable';
 export default function CreateLobby({saveName}) {
     // state hooks 
     const [userName, setUserName] = useState('')
+    const navigate = useNavigate()
 
     return (
         <div className='createLobby'>
