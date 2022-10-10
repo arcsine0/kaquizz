@@ -7,6 +7,8 @@ import logoImg from '../images/Logo.png'
 
 export default function QuizQuestion(props) {
     // put state hooks here
+    const current = props.current + 1
+    const max = props.max
     const question = props.question
     const choices = props.choices
     const submitAnswer = props.submitAnswer
@@ -25,11 +27,11 @@ export default function QuizQuestion(props) {
             <div className = 'timerContainer'>
                 <div>
                     <img src={logoImg} className='logo'></img>
-                    <h4 className="questionsNum">1 / 4</h4>
+                    <h4 className="questionsNum">{current} / {max}</h4>
                 </div>
                 
                 <div className="timer"></div>
-                <div className="placementContainer">
+                <div className="currentPlacement">
                     <i class="ri-medal-line large-icon"></i>
                     <h4 className="placement">1st</h4>
                 </div>

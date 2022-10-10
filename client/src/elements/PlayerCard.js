@@ -8,7 +8,7 @@ export default function PlayerCard(props) {
     return (
         <div className='playerCard'>
             <div className='playerInfo'>
-                <h4 className="playerName">Player 1</h4>
+                <h4 className="playerName">{name}</h4>
                 <p><span className="currentPlayer">You</span></p>
             </div>
             <img src={defaultUserImg} className='userImg'></img>

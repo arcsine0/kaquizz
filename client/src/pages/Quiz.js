@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTimer } from 'react-timer-hook';
+import { useNavigate } from 'react-router-dom';
 
 import QuizQuestion from './QuizQuestion';
 
@@ -7,15 +8,18 @@ import QuizQuestion from './QuizQuestion';
 import './Main.css'
 
 export default function Quiz(props) {
-    const [count, setCount] = useState(0)
+    const count = props.count
+    
     const [timerCount, setTimerCount] = useState(0)
     const [answer, setAnswer] = useState("")
     const [preview, setPreview] = useState(false)
 
     const submitAnswer = props.submitAnswer
 
-    const sessionData = localStorage.getItem('sessionData')
+    const sessionData = sessionStorage.getItem('sessionData')
     const data = JSON.parse(sessionData)
+    
+    const navigate = useNavigate()
 
     // console.log(data.timer, data.questions, data.choices, data.answer)
     const expTime = new Date();
@@ -24,9 +28,9 @@ export default function Quiz(props) {
     // const { seconds, start, restart } = useTimer({ expTime, onExpire: () => { console.log('timer done!') } })
 
     function validateAnswer(id) {
+        console.log('answered!')
         setAnswer(toString(id))
         setPreview(false)
-        setCount(count + 1)
 
         var qPoint = 0
 
@@ -40,17 +44,8 @@ export default function Quiz(props) {
 
         const score = qPoint
         submitAnswer(score)
-    }
+        navigate('/placement')
 
-    function Choices() {
-        // data.choices[count].forEach((choice, index) => {
-        //     return (
-        //         <div id={index} className='title' onClick={(event) => validateAnswer(event)}>{choice}</div>
-        //     )
-        // })
-        return (
-            <div id={"index"} className='title' onClick={(event) => validateAnswer(event)}>{"choice"}</div>
-        )
     }
 
     function DisplayQuestion() {
@@ -68,7 +63,7 @@ export default function Quiz(props) {
             // start()
             return (
                 <div>
-                    <QuizQuestion question={data.questions[count]} choices={data.choices[count]} submitAnswer={(id) => validateAnswer(id)} />
+                    <QuizQuestion current={count} max={data.questions.length} question={data.questions[count]} choices={data.choices[count]} submitAnswer={(id) => validateAnswer(id)} />
                 </div>
             )
         }

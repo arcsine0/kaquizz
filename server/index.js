@@ -46,6 +46,7 @@ io.on('connection', (socket) => {
         socket.data.username = data.name;
         socket.data.id = socket.id
         socket.data.role = data.role
+        socket.data.score = 0
 
         socket.join(roomID)
 
@@ -56,13 +57,14 @@ io.on('connection', (socket) => {
         })
 
         console.log(allData);
-        socket.emit('userData', allData);
+        io.sockets.emit('userData', allData)
     })
 
     socket.on('join', async (data) => {
         socket.data.username = data.name
         socket.data.id = socket.id
         socket.data.role = data.role
+        socket.data.score = 0
         
         socket.join(data.id)
         if (socket.rooms.has(data.id)) {
@@ -77,19 +79,24 @@ io.on('connection', (socket) => {
 
             io.sockets.emit('userData', allData);
         }
+
     });
 
-    socket.on('answered', async (data) => {
-        socket.data.score = data.score
-        console.log(data.score)
+    socket.on('start', () => {
+        console.log(`${roomID} is starting...`)
+        io.in(roomID).emit('start')
+    })
 
-        var allData = []
-        var roomClients = await io.in(data.id).fetchSockets()
-        roomClients.forEach((s, index) => {
-            allData.push(s.data);
-        })
+    socket.on('answered', (data) => {
+        socket.data.score += data.score
+        
+        console.log(socket.data.username, socket.data.score)
+        io.in(roomID).emit('scores', {"name": socket.data.username, "score": socket.data.score})
+    })
 
-        io.sockets.emit('userData', allData)
+    socket.on('next', () => {
+        console.log('next question')
+        io.in(roomID).emit('nextQ')
     })
 
     socket.on('disconnect', async () => {

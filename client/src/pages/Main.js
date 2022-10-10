@@ -13,6 +13,8 @@ import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
 import Editor from './Editor';
 import Quiz from './Quiz';
+import QuizQuestion from './QuizQuestion';
+import RoundPlacement from './RoundPlacement';
 
 import logoImg from '.././images/Logo.png';
 
@@ -30,12 +32,17 @@ function Main() {
     const [inputID, setInputID] = useState('');
     const [userName, setUserName] = useState('');
 
+    const [questionCount, setQuestionCount] = useState(0)
+
     // i made this one for testing purposes, don't mind
     // const [mode, setMode] = useState('create');
 
     // test data
     var sessionData = {"timer": 10, "questions": ["What is 1+1?", "How stupid am I?", "What the Fuck?"], "choices": [["2", "11", "idk", "none of the above"], ["Yes", "No", "Maybe", "A Little"], ["Indeed", "I know right", "Fuck you too", "True"]], "answers": ["2", "Yes", "I know right"]}
-    localStorage.setItem('sessionData', JSON.stringify(sessionData))
+    sessionStorage.setItem('sessionData', JSON.stringify(sessionData))
+
+    var scores = [{}]
+    sessionStorage.setItem('scores', JSON.stringify(scores))
 
     // this state hook is for receiving all player data inside the room from the server
     const [playersList, setPlayersList] = useState([]);
@@ -53,82 +60,71 @@ function Main() {
     socket.on('userData', (data) => {
         setPlayersList(data);
     })
-    
-    // these handle the joining and creating rooms, i'll change them eventually as needed
-    // commented out because socket is defined if server is running
-    // don't edit please
+
+    socket.on('start', () => {
+        navigate('/quiz')
+    })
+
+    socket.on('scores', (data) => {
+        const scores = sessionStorage.getItem('scores')
+        var scoreList = JSON.parse(scores)
+        scoreList[0][data.name] = data.score
+
+        sessionStorage.setItem('scores', JSON.stringify(scoreList))
+
+    })
+
+    socket.on('nextQ', () => {
+        console.log('next')
+        setQuestionCount(questionCount + 1)
+        navigate('/quiz')
+    })
 
     function join(name, id) {
         setUserName(name);
         setInputID(id);
+
+        console.log(name, id)
         
         if (id !== undefined) {
             if (id !== '') {
                 console.log('joining lobby...')
                 socket.emit('join', {'name': name, 'id': id, 'role': "player"})
                 setRoomID(id)
+                sessionStorage.setItem('role', 'player')
             }
         } else {
             if (name !== '') {
                 console.log('creating lobby...')
                 socket.emit('create', {'name': name, 'role': "host"})
+                sessionStorage.setItem('role', 'host')
             }
         }
 
         navigate('/lobby')
     }
 
-    function submitAnswer(score) {
-        socket.emit('answered', {'id': inputID, 'score': score})
+    function start() {
+        socket.emit('start')
     }
 
-    // i used these for testing purposes
-    // function Mode(props) {
-    //     const selectedMode = props.selectedMode
-    //     if (selectedMode === 'create') {
-    //         return (
-    //             <CreateLobby saveName={(name) => create(name)}/>
-    //         )
-    //     } else {
-    //         return (
-    //             <JoinLobby submitID={(name, id) => join(name, id)}/>
-    //         )
-    //     }
-    // }
+    function submitAnswer(score) {
+        socket.emit('answered', {'name': userName, 'score': score})
+    }
 
-    // function LobbyUI() {
-    //     if (playersList.length !== 0) {
-    //         return (
-    //             <Lobby playerList={playersList}/>
-    //         )
-    //     } else {
-    //         return (
-    //             <h3>No lobby created yet...</h3>
-    //         )
-    //     }
-    // }
+    function nextQuestion() {
+        socket.emit('next')
+    }
 
     return (
 
         <Routes>
             <Route exact path='/' element={<Lobby toLobby={(name, id) => join(name, id)} />} />
-            <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} />} />
+            <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} start={() => start()} />} />
             <Route exact path='/editor' element={<Editor />} />
-            <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} />} />
+            <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} />} />
+            <Route exact path='/placement' element={<RoundPlacement next={() => nextQuestion()} />} />
         </Routes>
-
-
-        // i used these for testing purposes as well
-        // <div className='container shadow rounded p-4'>
-        //     <h1>kaquizz</h1>
-        //     <h1><strong>{roomID}</strong></h1>
-        //     <button type="button" class="btn btn-primary m-1" onClick={() => setMode('create')}>Create Lobby</button>
-        //     <button type="button" class="btn btn-primary m-1" onClick={() => setMode('join')}>Join Lobby</button>
-
-        //     <Mode selectedMode={mode}/>
-        //     <LobbyUI />
-            
-        // </div>
 
     )
 }
