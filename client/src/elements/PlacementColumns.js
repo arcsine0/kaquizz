@@ -1,8 +1,4 @@
-export const COLUMNS = [
-    {
-        Header: 'Rank',
-        Accessor: 'rank'
-    },
+export const columns = [
     {
         Header: 'Player',
         Accessor: 'player'

@@ -41,10 +41,12 @@ io.on('connection', (socket) => {
     var roomID = nanoid(6)
     socket.emit('UID', roomID)
 
-    socket.on('create', async (name) => {
+    socket.on('create', async (data) => {
         console.log(`${socket.id} is creating lobby_${roomID}`);
-        socket.data.username = name;
+        socket.data.username = data.name;
         socket.data.id = socket.id
+        socket.data.role = data.role
+        socket.data.score = 0
 
         socket.join(roomID)
 
@@ -55,12 +57,14 @@ io.on('connection', (socket) => {
         })
 
         console.log(allData);
-        socket.emit('userData', allData);
+        io.sockets.emit('userData', allData)
     })
 
     socket.on('join', async (data) => {
         socket.data.username = data.name
         socket.data.id = socket.id
+        socket.data.role = data.role
+        socket.data.score = 0
         
         socket.join(data.id)
         if (socket.rooms.has(data.id)) {
@@ -73,18 +77,34 @@ io.on('connection', (socket) => {
                 allData.push(s.data);
             })
 
-            console.log(allData);
             io.sockets.emit('userData', allData);
         }
+
     });
 
+    socket.on('start', () => {
+        console.log(`${roomID} is starting...`)
+        io.in(roomID).emit('start')
+    })
 
-    socket.on('disconnect', async (data) => {
+    socket.on('answered', (data) => {
+        socket.data.score += data.score
+        
+        console.log(socket.data.username, socket.data.score)
+        io.in(roomID).emit('scores', {"name": socket.data.username, "score": socket.data.score})
+    })
+
+    socket.on('next', () => {
+        console.log('next question')
+        io.in(roomID).emit('nextQ')
+    })
+
+    socket.on('disconnect', async () => {
         console.log(`user ${socket.id} has disconnected`);
         socket.leave(roomID)
 
         var allData = []
-        var roomClients = await io.in(data.id).fetchSockets()
+        var roomClients = await io.in(socket.data.id).fetchSockets()
         roomClients.forEach((s, index) => {
             allData.push(s.data);
         })

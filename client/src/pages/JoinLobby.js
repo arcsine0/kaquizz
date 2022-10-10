@@ -15,11 +15,23 @@ export default function JoinLobby(props) {
     // state hooks
     const [inputID, setInputID] = useState('')
     const [userName, setUserName] = useState('')
+    const [role, setRole] = useState(sessionStorage.getItem('role'))
 
-    var players = props.players
-    var code = props.code
+    const players = props.players
+    const code = props.code
+    const start = props.start
 
     const navigate = useNavigate()
+
+    console.log(role)
+
+    function HostControls() {
+        if (role === 'host') {
+            return (
+                <button type="button" class="violet-btn" onClick={() => start()}>Start!</button>
+            )
+        }
+    }
 
     return (
         <div className='joinLobby'>
@@ -35,6 +47,7 @@ export default function JoinLobby(props) {
                     <h3>GAME CODE</h3>
                     <input type="text" id="gameCode" value={code} readonly></input>
                 </div>
+                <HostControls />
             </div>
 
             <div className='lobbyDivider'>

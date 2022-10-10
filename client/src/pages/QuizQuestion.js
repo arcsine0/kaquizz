@@ -5,10 +5,18 @@ import './Main.css'
 
 import logoImg from '../images/Logo.png'
 
-export default function QuizQuestion() {
+export default function QuizQuestion(props) {
     // put state hooks here
-    
+    const current = props.current + 1
+    const max = props.max
+    const question = props.question
+    const choices = props.choices
+    const submitAnswer = props.submitAnswer
 
+    function sendAnswer(e) {
+        submitAnswer(e.target.id)
+    }
+    
     return (
         
         // <div className='quiz centerContainer'>
@@ -19,7 +27,7 @@ export default function QuizQuestion() {
             <div className = 'timerContainer'>
                 <div>
                     <img src={logoImg} className='logo'></img>
-                    <h4 className="questionsNum">1 / 4</h4>
+                    <h4 className="questionsNum">{current} / {max}</h4>
                 </div>
                 
                 <div className="timer"></div>
@@ -30,20 +38,20 @@ export default function QuizQuestion() {
                 
             </div>
             <div className = 'question'>
-                <h3>What is your Question 1?</h3>
+                <h3>{question}</h3>
             </div>
             <div className = 'choices'>
-                <div className = 'choiceCard yellow-bg'>
-                    <h3>Choice 1</h3>
+                <div id='0' className = 'choiceCard yellow-bg' onClick={(e) => sendAnswer(e)}>
+                    <h3>{choices[0]}</h3>
                 </div>
-                <div className = 'choiceCard red-bg'>
-                    <h3>Choice 2</h3>
+                <div id='1' className = 'choiceCard red-bg' onClick={(e) => sendAnswer(e)}>
+                    <h3>{choices[1]}</h3>
                 </div>
-                <div className = 'choiceCard blue-bg'>
-                    <h3>Choice 3</h3>
+                <div id='2' className = 'choiceCard blue-bg' onClick={(e) => sendAnswer(e)}>
+                    <h3>{choices[2]}</h3>
                 </div>
-                <div className = 'choiceCard green-bg'>
-                    <h3>Choice 4</h3>
+                <div id='3' className = 'choiceCard green-bg' onClick={(e) => sendAnswer(e)}>
+                    <h3>{choices[3]}</h3>
                 </div>
             </div>
             

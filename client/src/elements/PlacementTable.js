@@ -1,12 +1,13 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table';
-import {COLUMNS} from '../elements/PlacementColumns';
+import {columns} from '../elements/PlacementColumns';
 import MOCK_DATA from '../elements/MOCK_DATA.json';
 
-export const PlacementTable = () => {
+export const PlacementTable = (props) => {
+    const data = props.data
 
-    const columns = useMemo(() => COLUMNS, [])
-    const data = useMemo(() => MOCK_DATA, [])
+    // const columns = useMemo(() => COLUMNS, [])
+    // const data = useMemo(() => playerData, [])
 
     const {
         getTableProps, // table props from react-table
