@@ -83,3 +83,19 @@ button {
 .white-icon {
   color: var(--white-color);
 }
+
+.yellow-bg {
+  background-color: #cd972e;
+}
+
+.red-bg {
+  background-color: #cb3b3b;
+}
+
+.blue-bg {
+  background-color: #396fcc;
+}
+
+.green-bg {
+  background-color: #46944e;
+}

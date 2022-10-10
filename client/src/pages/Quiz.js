@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 
+import QuizQuestion from './QuizQuestion';
+
 // import css here
 import './Main.css'
 
@@ -19,15 +21,24 @@ export default function Quiz(props) {
     const expTime = new Date();
     expTime.setSeconds(expTime.getSeconds() + data.timer);
 
-    const { seconds, start, restart } = useTimer({ expTime, onExpire: () => { console.log('timer done!') } })
+    // const { seconds, start, restart } = useTimer({ expTime, onExpire: () => { console.log('timer done!') } })
 
-    function validateAnswer(event) {
-        const id = event.target.id
+    function validateAnswer(id) {
         setAnswer(toString(id))
+        setPreview(false)
+        setCount(count + 1)
 
-        console.log(seconds)
+        var qPoint = 0
 
-        const score = 1000
+        if (data.choices[count][id] === data.answers[count]) {
+            qPoint = 1000
+        } else {
+            qPoint = 0
+        }
+
+        // console.log(seconds)
+
+        const score = qPoint
         submitAnswer(score)
     }
 
@@ -49,14 +60,15 @@ export default function Quiz(props) {
                 setPreview(true)
             }, 2000)
             return (
-                <div className='title question'>{data.questions[count]}</div>
+                <div className='quiz centerContainer'>
+                    <h1 className='quizTitle'>{data.questions[count]}</h1>
+                </div>
             )
         } else {
-            start()
+            // start()
             return (
                 <div>
-                    <div className='title question'>{data.questions[count]}</div>
-                    <Choices />
+                    <QuizQuestion question={data.questions[count]} choices={data.choices[count]} submitAnswer={(id) => validateAnswer(id)} />
                 </div>
             )
         }

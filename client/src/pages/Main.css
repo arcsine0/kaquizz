@@ -5,6 +5,13 @@ body {
     background-size: cover;
 }
 
+.quiz {
+    height: 100vh;
+    background-image: url(.././images/Background2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* ----------------------------------------
  *  REUSABLE STYLES
  * ---------------------------------------- */
@@ -53,6 +60,16 @@ button {
     bottom: 24px;
 }
 
+.centerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.centerContainer h1 {
+    font-size: 5.4rem;
+}
 
 /* ----------------------------------------
  *  HOMEPAGE
@@ -167,46 +184,89 @@ button {
 }
 
 /* ----------------------------------------
- *  EDITOR
+ *  QUESTION
  * ---------------------------------------- */
 
-.editor-bg {
+.questionContainer {
     height: 100vh;
-    width: 100vw;
-
-    background-color: #F5F5F5;
-}
-
-.top-menu {
-    height: 130px;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-
-    background-color: #5D3D8C;
-}
-
-.quizNameContainer {
     display: flex;
     flex-direction: column;
+}
+
+.timerContainer {
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+}
+
+.timerContainer div {
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
-    background-color: var(--violet-color);
-   
-    border-radius: 24px;
-    color: #fff;
+    gap: 8px;
 }
 
-.proceed-btn {
+.timerContainer .logo {
+    height: 70px;
+}
+
+.timerContainer .questionsNum {
+    background-color: #f3f3f3;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+
+.timer {
+    height: 40px;
+    min-width: 600px;
+    width: 70%;
+    background-color: #f3f3f3;
+    border-radius: 200px;
+}
+
+.placementContainer {
+    background-color: var(--yellow-color);
     color: white;
+    padding: 0 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ----------------------------------------
- *  QUIZ
- * ---------------------------------------- */
+.question {
+    background-color: #181845;
+    color: white;
+    max-height: 150px;
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 64px;
+}
 
- .question {
-    color: white
- }
+.question h3 {
+    text-align: center;
+}
+
+.choices {
+    flex: 1;
+    height: 100%;
+    margin: 12px 64px 64px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+}
+
+.choiceCard {
+    color: white; 
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}

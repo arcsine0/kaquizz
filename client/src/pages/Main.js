@@ -12,7 +12,7 @@ import CreateLobby from './CreateLobby';
 import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
 import Editor from './Editor';
-import Quiz from './Quiz'
+import Quiz from './Quiz';
 
 import logoImg from '.././images/Logo.png';
 

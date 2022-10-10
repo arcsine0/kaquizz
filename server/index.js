@@ -75,13 +75,21 @@ io.on('connection', (socket) => {
                 allData.push(s.data);
             })
 
-            console.log(allData);
             io.sockets.emit('userData', allData);
         }
     });
 
-    socket.on('answered', (data) => {
+    socket.on('answered', async (data) => {
         socket.data.score = data.score
+        console.log(data.score)
+
+        var allData = []
+        var roomClients = await io.in(data.id).fetchSockets()
+        roomClients.forEach((s, index) => {
+            allData.push(s.data);
+        })
+
+        io.sockets.emit('userData', allData)
     })
 
     socket.on('disconnect', async () => {
