@@ -109,6 +109,7 @@ function Main() {
             <Route exact path='/quiz' element={<Quiz />} />
             <Route exact path='/quiz-question' element={<QuizQuestion />} />
             <Route exact path='/placement' element={<RoundPlacement />} />
+            <Route exact path='/create-lobby' element={<CreateLobby />} />
         </Routes>
 
 

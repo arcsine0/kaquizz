@@ -12,6 +12,7 @@ body {
     background-size: cover;
 }
 
+
 /* ----------------------------------------
  *  REUSABLE STYLES
  * ---------------------------------------- */
@@ -293,4 +294,45 @@ button {
 
 .placementContainer {
     background-color: var(--white-color);
+}
+
+/* ----------------------------------------
+ *  CREATE LOBBY/QUIZ
+ * ---------------------------------------- */
+
+.createLobby {
+    height: 100vh;
+    background-image: none;
+    background-color: #f3f3f3;
+ }
+
+.createLobby .header {
+    background-color: var(--violet-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+.createLobby .exitButton {
+    position: relative;
+    background-color: var(--violet-color);
+    top: 0px;
+}
+
+.proceed {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.quizTitleContainer {
+    width: 900px;
+    text-align: center;
+}
+
+.quizTitle input {
+    text-align: center;
 }
