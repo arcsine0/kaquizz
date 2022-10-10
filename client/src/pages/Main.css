@@ -297,16 +297,18 @@ button {
 }
 
 /* ----------------------------------------
- *  CREATE LOBBY/QUIZ
+ *  EDITOR
  * ---------------------------------------- */
 
-.createLobby {
-    height: 100vh;
+.editor-bg {
     background-image: none;
     background-color: #f3f3f3;
- }
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
 
-.createLobby .header {
+.editor-bg .header {
     background-color: var(--violet-color);
     display: flex;
     justify-content: space-between;
@@ -314,7 +316,7 @@ button {
     padding: 8px;
 }
 
-.createLobby .exitButton {
+.editor-bg .exitButton {
     position: relative;
     background-color: var(--violet-color);
     top: 0px;
@@ -326,13 +328,146 @@ button {
     justify-content: center;
     align-items: center;
     margin-right: 32px;
+    gap: 6px;
 }
 
 .quizTitleContainer {
+    flex: 0 1 auto;
     width: 900px;
     text-align: center;
 }
 
-.quizTitle input {
+.quizTitleContainer input {
     text-align: center;
+    font-weight: 600;
+    font-size: 24px;
 }
+
+.editorContainer {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    
+}
+
+.questionNumEditor {
+    padding: 12px 18px; 
+    height: 85vh;
+    flex: 0 1 auto;
+    overflow-y: auto;
+}
+
+.questionEditor {
+    flex: 1 1 auto;
+    padding: 32px;
+    border-left: solid 1px #BDBDBD;
+    border-right: solid 1px #BDBDBD;
+}
+
+.quizSettings {
+    flex: 0 1 auto;
+}
+
+.addQuestion-btn {
+    border: solid 2px var(--violet-color);
+    border-radius: 15px;
+    display: flex;
+    color: var(--violet-color);
+    text-align: center;
+    justify-content: center;
+    height: fit-content;
+    padding: 12px;
+    cursor: pointer;
+    margin-top: 14px;
+}
+
+.addQuestion-btn p {
+    margin: 0;
+    padding: 0;
+}
+
+.questionCard {
+    font-size: 18px;
+    display: flex;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: var(--white-color);
+    margin-top: 14px;
+}
+
+.questionCard.current{
+    background-color: var(--violet-color);
+    color: white;
+}
+
+.questionCard h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.choicesEditor {
+    padding: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+}
+
+.choiceEditorCard {
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 14em;
+    border-radius: 12px;
+}
+
+.choiceEditorCard input {
+    height: 100%;
+    border: none;
+    border-radius: 12px 0px 0px 12px;
+}
+
+.choiceEditorCard .correctToggleBtn {
+    height: 100%;
+    color: white;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 0 10px 10px 0;
+}
+
+.choiceEditorCard .correctToggleBtn.correct {
+    background-color: #5abd07;
+}
+
+.choiceEditorCard .correctToggleBtn.wrong {
+    background-color: #e62e2d;
+}
+
+.quizSettings {
+    padding: 18px 12px;
+}
+
+.quizSettings h3 {
+    font-size: 0.9rem;
+    overflow: hidden;
+    color: var(--border-color);
+}
+
+.quizSettings h3:after {
+    content: "";
+    display: inline-block;
+    height: 0.7em;
+    vertical-align: bottom;
+    width: 100%;
+    margin-right: -100%;
+    margin-left: 10px;
+    border-top: 2px solid var(--border-color);
+}
+
+
+

@@ -22,11 +22,21 @@ body {
   font-size: 1em;
   font-weight: 600;
   height: 100vh;
-  /* overflow: hidden; */
+}
+
+.no-overflow {
+  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5 {
   font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 code {
@@ -61,6 +71,25 @@ button {
   color: white;
   font-weight: 600;
   font-size: 1.2em;
+}
+
+.dragIcon {
+  width: 30px;
+  display: block;
+  fill: white;
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+.dragIcon:before {
+  content: '';
+  background: url(./images/drag_indicator.svg);
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  margin-left: -20px;
 }
 
 .violet-btn {
@@ -99,4 +128,20 @@ button {
 
 .green-bg {
   background-color: #46944e;
+}
+
+.yellow-border {
+  border: solid 3px #cd972e;
+}
+
+.red-border {
+  border: solid 3px #cb3b3b;
+}
+
+.blue-border {
+  border: solid 3px #396fcc;
+}
+
+.green-border {
+  border: solid 3px #46944e;
 }
