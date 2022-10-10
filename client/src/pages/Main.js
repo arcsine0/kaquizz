@@ -38,7 +38,7 @@ function Main() {
     // const [mode, setMode] = useState('create');
 
     // test data
-    var sessionData = {"timer": 10, "questions": ["What is 1+1?", "How stupid am I?", "What the Fuck?"], "choices": [["2", "11", "idk", "none of the above"], ["Yes", "No", "Maybe", "A Little"], ["Indeed", "I know right", "Fuck you too", "True"]], "answers": ["2", "Yes", "I know right"]}
+    var sessionData = {"timer": 10, "questions": ["What is 1+1?", "How stupid am I?", "What the Huh?"], "choices": [["2", "11", "idk", "none of the above"], ["Yes", "No", "Maybe", "A Little"], ["Indeed", "I know right", "Yup", "True"]], "answers": ["2", "Yes", "I know right"]}
     sessionStorage.setItem('sessionData', JSON.stringify(sessionData))
 
     var scores = [{}]
