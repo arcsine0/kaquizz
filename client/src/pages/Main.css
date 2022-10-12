@@ -12,6 +12,10 @@ body {
     background-size: cover;
 }
 
+.host {
+    background-image: url(.././images/Background4.png);
+}
+
 
 /* ----------------------------------------
  *  REUSABLE STYLES
@@ -104,6 +108,12 @@ button {
     height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.hostControls {
+    display: flex;
+    width: 100%;
+    gap: 8px;
 }
  
 .lobbyInfoContainer {

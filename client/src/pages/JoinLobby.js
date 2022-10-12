@@ -28,13 +28,16 @@ export default function JoinLobby(props) {
     function HostControls() {
         if (role === 'host') {
             return (
-                <button type="button" class="violet-btn" onClick={() => start()}>Start!</button>
+                <div className='hostControls'>
+                    <button type="button" class="red-btn" onClick={() => start()}>Edit Quiz</button>
+                    <button type="button" class="yellow-btn" onClick={() => start()}>Start Game</button>
+                </div>
             )
         }
     }
 
     return (
-        <div className='joinLobby'>
+        <div className={`joinLobby ${role=="host" ? "host" : ""}`}>
             <div className='exitButton'>
                 <i class="ri-logout-box-line large-icon white-icon" onClick={() => { navigate('/') }}></i>
             </div>

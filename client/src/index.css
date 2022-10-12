@@ -119,6 +119,11 @@ button {
 }
 
 
+.yellow-btn {
+  background-color: var(--yellow-color);
+}
+
+
 /* ----------------------------------------
  *  ICONS
  * ---------------------------------------- */
@@ -211,7 +216,7 @@ table tbody tr {
 }
 
 td {
-  border: solid 0px #000;
+  border: solid 0px #000; 
   border-style: none;
   padding: 10px;
 }
