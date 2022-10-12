@@ -84,6 +84,10 @@ button {
     font-size: 5.4rem;
 }
 
+.hostText {
+    background-color: #a541a2 !important;
+}
+
 /* ----------------------------------------
  *  HOMEPAGE
  * ---------------------------------------- */
@@ -271,10 +275,6 @@ button {
     padding: 64px 32px;
 }
 
-.hostQuestion {
-    background-color: #a541a2;
-}
-
 .question h3 {
     text-align: center;
 }
@@ -305,26 +305,29 @@ button {
 .roundPlacement {
     height: 100vh;
 }
-
  
-.roundPlacement h3 {
+.roundPlacement .waitingText {
+    color: white;
+}
+
+.placementContainer {
+    background-color: #f3f3f3;
+    margin: 32px auto;
+    padding: 16px;
+    border-radius: 12px;
+    max-width: 50vw;
+}
+
+.waitingText {
     background-color: #181845;
     color: white;
-    max-height: 200px;
+    max-height: 150px;
     margin: 0 auto;
     width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 64px 32px;
-}
-
-.placementContainer {
-    background-color: #f3f3f3;
-    margin: 64px auto;
-    padding: 64px;
-    border-radius: 12px;
-    max-width: 70vw;
+    padding-top: 32px;
 }
 
 /* ----------------------------------------
@@ -513,3 +516,5 @@ button {
     font-size: 1em;
     margin-top: 8px;
 }
+
+

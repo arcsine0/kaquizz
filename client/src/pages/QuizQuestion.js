@@ -13,7 +13,7 @@ export default function QuizQuestion(props) {
     const choices = props.choices
     const submitAnswer = props.submitAnswer
 
-    const [role, setRole] = useState(sessionStorage.getItem('role'))
+    const role = sessionStorage.getItem('role')
 
     function sendAnswer(e) {
         submitAnswer(e.target.id)
@@ -39,7 +39,7 @@ export default function QuizQuestion(props) {
                 </div>
                 
             </div>
-            <div className = {`question ${role=="host" ? "hostQuestion" : ""}`}>
+            <div className = {`question ${role=="host" ? "hostText" : ""}`}>
                 <h3>{question}</h3>
             </div>
             <div className = 'choices'>

@@ -17,17 +17,19 @@ export default function RoundPlacement(props) {
     function Waiting() {
         if (role === 'host') {
             return (
-                <h3 className='waitingText' onClick={() => next()}>Click anywhere to start the next round...</h3>
+                <div className={`waitingText ${role=="host" ? "hostText" : ""}`}>
+                    <h3 onClick={() => next()}>Click anywhere to start the next round...</h3>
+                </div>
             )
         } else {
             return (
-                <h3 className='waitingText'>Waiting for host to start the next round...</h3>
+                <h3>Waiting for host to start the next round...</h3>
             )
         }
     }
 
     return (
-        <div className='quiz roundPlacement'>
+        <div className={`quiz roundPlacement ${role=="host" ? "hostQuiz" : ""}`}>
             <div className='timerContainer'>
                 <div>
                     <img src={logoImg} className='logo'></img>
@@ -39,11 +41,12 @@ export default function RoundPlacement(props) {
                 </div>
             </div>
             
+            <Waiting />
+            
             <div className='placementContainer'>
                 <PlacementTable data={JSON.parse(scores)} />
             </div>
-
-            <Waiting />
+            
         </div>
         // <PlacementTable/>
     )

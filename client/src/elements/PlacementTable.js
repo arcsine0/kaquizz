@@ -36,6 +36,26 @@ export const PlacementTable = (props) => {
           <td>Player 2</td>
           <td>300</td>
         </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Player 2</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Player 2</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Player 2</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Player 2</td>
+          <td>300</td>
+        </tr>
       </tbody>
     </Table>
   )

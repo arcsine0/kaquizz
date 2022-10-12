@@ -27,7 +27,7 @@ export default function Quiz(props) {
 
     // const { seconds, start, restart } = useTimer({ expTime, onExpire: () => { console.log('timer done!') } })
 
-    const [role, setRole] = useState(sessionStorage.getItem('role'))
+    const role = sessionStorage.getItem('role')
 
     function validateAnswer(id) {
         console.log('answered!')
