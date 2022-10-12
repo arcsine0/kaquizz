@@ -16,7 +16,7 @@ export const PlacementTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr className='currentPlayer'>
           <td>1st</td>
           <td>Player 1</td>
           <td>200</td>

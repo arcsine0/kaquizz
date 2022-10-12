@@ -198,7 +198,7 @@ button {
     line-height: 0px;
 }
 
-.currentPlayer {
+.playerInfo .currentPlayer {
     line-height: 0px;
     background-color: var(--violet-color);
     color: var(--white-color);
