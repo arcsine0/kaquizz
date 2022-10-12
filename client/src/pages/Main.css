@@ -280,6 +280,11 @@ button {
  *  ROUND PLACEMENT
  * ---------------------------------------- */
 
+.roundPlacement {
+    height: 100vh;
+}
+
+ 
 .roundPlacement h3 {
     background-color: #181845;
     color: white;
@@ -293,7 +298,11 @@ button {
 }
 
 .placementContainer {
-    background-color: var(--white-color);
+    background-color: #f3f3f3;
+    margin: 64px auto;
+    padding: 64px;
+    border-radius: 12px;
+    max-width: 70vw;
 }
 
 /* ----------------------------------------

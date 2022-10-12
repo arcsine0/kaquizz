@@ -16,7 +16,26 @@ export const PlacementTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        
+        <tr>
+          <td>1st</td>
+          <td>Player 1</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Player 2</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Player 2</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Player 2</td>
+          <td>300</td>
+        </tr>
       </tbody>
     </Table>
   )

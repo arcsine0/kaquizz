@@ -77,6 +77,11 @@ label {
   font-size: 4em;
 }
 
+
+/* ----------------------------------------
+ *  BUTTON
+ * ---------------------------------------- */
+
 button {
   border-radius: 12px;
   padding: 12px; 
@@ -86,7 +91,7 @@ button {
   font-size: 1.2em;
 }
 
-.dragIcon {
+/* .dragIcon {
   width: 30px;
   display: block;
   fill: white;
@@ -103,7 +108,7 @@ button {
   height: 20px;
   margin-top: 3px;
   margin-left: -20px;
-}
+} */
 
 .violet-btn {
   background-color: var(--violet-color);
@@ -113,10 +118,16 @@ button {
   background-color: var(--red-color);
 }
 
+
+/* ----------------------------------------
+ *  ICONS
+ * ---------------------------------------- */
+ 
 .large-icon {
   font-size: 2.2em;
   display: block;
 }
+
 
 .smaller-icon {
   font-size: 1.2em;
@@ -132,6 +143,10 @@ button {
 .white-icon {
   color: var(--white-color);
 }
+
+/* ----------------------------------------
+ *  COLORS
+ * ---------------------------------------- */
 
 .yellow-bg {
   background-color: #cd972e;
@@ -163,4 +178,44 @@ button {
 
 .green-border {
   border: solid 3px #46944e;
+}
+
+/* ----------------------------------------
+ *  TABLE
+ * ---------------------------------------- */
+
+table {
+  border-collapse: separate;
+  min-width: 400px;
+  border-spacing: 0 15px;
+}
+
+table thead tr {
+  text-align: left;
+  
+}
+
+table thead tr .currentPlayer {
+  background-color: var(--violet-color);
+}
+
+table th {
+  border: none;
+}
+
+table tbody tr {
+  font-size: 22px;
+  background-color: var(--white-color);
+  background-color: var(--violet-color);
+  
+}
+
+td {
+  border: solid 0px #000;
+  border-style: none;
+  padding: 10px;
+}
+
+tr td {
+  border-radius: 5px;
 }
