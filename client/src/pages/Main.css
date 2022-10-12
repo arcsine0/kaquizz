@@ -14,6 +14,14 @@ body {
 
 .host {
     background-image: url(.././images/Background4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hostQuiz {
+    background-image: url(.././images/Background5.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -261,6 +269,10 @@ button {
     justify-content: center;
     align-items: center;
     padding: 64px 32px;
+}
+
+.hostQuestion {
+    background-color: #a541a2;
 }
 
 .question h3 {

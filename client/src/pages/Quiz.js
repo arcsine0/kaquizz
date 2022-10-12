@@ -27,6 +27,8 @@ export default function Quiz(props) {
 
     // const { seconds, start, restart } = useTimer({ expTime, onExpire: () => { console.log('timer done!') } })
 
+    const [role, setRole] = useState(sessionStorage.getItem('role'))
+
     function validateAnswer(id) {
         console.log('answered!')
         setAnswer(toString(id))
@@ -55,7 +57,7 @@ export default function Quiz(props) {
                 setPreview(true)
             }, 2000)
             return (
-                <div className='quiz centerContainer'>
+                <div className={`quiz centerContainer ${role=="host" ? "hostQuiz" : ""}`}>
                     <h1 className='quizTitle'>{data.questions[count]}</h1>
                 </div>
             )

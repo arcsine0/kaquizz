@@ -13,6 +13,8 @@ export default function QuizQuestion(props) {
     const choices = props.choices
     const submitAnswer = props.submitAnswer
 
+    const [role, setRole] = useState(sessionStorage.getItem('role'))
+
     function sendAnswer(e) {
         submitAnswer(e.target.id)
     }
@@ -23,7 +25,7 @@ export default function QuizQuestion(props) {
         //     <h2 className='quizQuestionTitle'>What is your Question 1?</h2>
         // </div>
 
-        <div className = 'quiz questionContainer'>
+        <div className = {`quiz questionContainer ${role=="host" ? "hostQuiz" : ""}`}>
             <div className = 'timerContainer'>
                 <div>
                     <img src={logoImg} className='logo'></img>
@@ -37,7 +39,7 @@ export default function QuizQuestion(props) {
                 </div>
                 
             </div>
-            <div className = 'question'>
+            <div className = {`question ${role=="host" ? "hostQuestion" : ""}`}>
                 <h3>{question}</h3>
             </div>
             <div className = 'choices'>
