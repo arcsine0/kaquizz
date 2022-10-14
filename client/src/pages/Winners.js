@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // import css here
 import './Main.css'
 
 import logoImg from '../images/Logo.png'
 import { PlacementTable } from '../elements/PlacementTable';
+import { WinnersTable } from '../elements/WinnersTable';
 
 export default function FinalPlacement(props) {
     // put state hooks here
@@ -14,37 +16,39 @@ export default function FinalPlacement(props) {
     const role = sessionStorage.getItem('role')
     console.log(JSON.parse(scores).player1)
 
-    function Waiting() {
+    const navigate = useNavigate()
+
+    function Congratulations() {
         if (role === 'host') {
             return (
-                <div className={`waitingText ${role=="host" ? "hostText" : ""}`}>
-                    <h3 onClick={() => next()}>Click anywhere to start the next round...</h3>
+                <div className='congratulationsText'>
+                    <h3>Congratulations to the <span>Top 3 Winners</span>!</h3>
                 </div>
             )
         } else {
             return (
-                <h3>Waiting for host to start the next round...</h3>
+                <div className='congratulationsText'>
+                    <h3>Congratulations! You've got the <span>1st Place</span>.</h3>
+                </div>
             )
         }
     }
 
     return (
-        <div className={`quiz roundPlacement ${role=="host" ? "hostQuiz" : ""}`}>
-            <div className='timerContainer'>
-                <div>
-                    <img src={logoImg} className='logo'></img>
-                    <h4 className="questionsNum">1 / 4</h4>
-                </div>     
-                <div className="currentPlacement">
-                    <i className="ri-medal-line large-icon"></i>
-                    <h4 className="placement">1st</h4>
-                </div>
+        <div className={'winnerScreen winner-bg'}>
+            <div className='exitButton'>
+                <i class="ri-logout-box-line large-icon white-icon" onClick={() => { navigate('/lobby') }}></i>
             </div>
-            
-            <Waiting />
-            
-            <div className='placementContainer'>
-                <PlacementTable data={JSON.parse(scores)} />
+
+            <div className='winnersContainer'>
+                <img src={logoImg} className='logo'></img>
+                <h1 className='title'>KaQuizz!</h1>
+                <Congratulations />
+                <WinnersTable data={JSON.parse(scores)} />
+                <div className='winnersButton'>
+                    <button type="button" className="red-btn" onClick={() => { navigate('/leaderboard') }}>Show Leaderboard</button>
+                    <button type="button" className="yellow-btn" onClick={() => { navigate('/lobby') }}>Return to Lobby</button>
+                </div>
             </div>
             
         </div>
