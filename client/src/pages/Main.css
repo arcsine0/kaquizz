@@ -310,6 +310,10 @@ button {
     color: white;
 }
 
+.waitingText {
+    color: white;
+}
+
 .placementContainer {
     background-color: #f3f3f3;
     margin: 32px auto;

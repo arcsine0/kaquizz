@@ -6,7 +6,7 @@ import './Main.css'
 import logoImg from '../images/Logo.png'
 import { PlacementTable } from '../elements/PlacementTable';
 
-export default function RoundPlacement(props) {
+export default function FinalPlacement(props) {
     // put state hooks here
     const next = props.next
 
@@ -17,15 +17,13 @@ export default function RoundPlacement(props) {
     function Waiting() {
         if (role === 'host') {
             return (
-                <div className={'waitingText hostText'}>
+                <div className={`waitingText ${role=="host" ? "hostText" : ""}`}>
                     <h3 onClick={() => next()}>Click anywhere to start the next round...</h3>
                 </div>
             )
         } else {
             return (
-            <div className={'waitingText'}>
                 <h3>Waiting for host to start the next round...</h3>
-            </div>
             )
         }
     }

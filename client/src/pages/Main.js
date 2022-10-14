@@ -15,6 +15,7 @@ import Editor from './Editor';
 import Quiz from './Quiz';
 import QuizQuestion from './QuizQuestion';
 import RoundPlacement from './RoundPlacement';
+import FinalPlacement from './Winners'
 
 import logoImg from '.././images/Logo.png';
 
@@ -124,6 +125,7 @@ function Main() {
             <Route exact path='/editor' element={<Editor />} />
             <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} />} />
             <Route exact path='/placement' element={<RoundPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
+            <Route exact path='/winners' element={<FinalPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
         </Routes>
 
     )
