@@ -358,7 +358,7 @@ button {
 }
 
 .editor-bg .exitButton {
-    background-color: var(--yellow-color);
+    background-color: var(--violet-color);
     width: fit-content;
     display: flex;
     align-items: center;
@@ -367,8 +367,9 @@ button {
     cursor: pointer;
     padding: 12px 24px 12px 32px;
     border-radius: 0 40px 40px 0;
-    position: absolute;
-    top: 32px;
+    position: relative;
+    right: 12px;
+    top: 0px;
 }
 
 .proceed {
