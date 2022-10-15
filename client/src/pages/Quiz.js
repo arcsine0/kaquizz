@@ -46,8 +46,12 @@ export default function Quiz(props) {
 
         const score = qPoint
         submitAnswer(score)
-        navigate('/placement')
-
+        
+        if ((count + 1) === data.questions.length) {
+            navigate('/leaderboard')
+        } else {
+            navigate('/placement')
+        }
     }
 
     function DisplayQuestion() {
