@@ -66,9 +66,26 @@ export default function JoinLobby(props) {
                 })}
             </div>
 
-            <div className='chatLobbyBtn'>
+            <button className='chatLobbyBtn'>
                 <h4>Chat Lobby</h4>
                 <i class="ri-chat-3-fill large-icon"></i>
+            </button>
+
+            <div className='chat'>
+                <div className='chatheader'>TEXT CHAT</div>
+                    <div className='chathistory'></div>
+                        <div className='chatboxrow'>
+                            <div className='sendto'>
+                                To: &nbsp;
+                                <select className='selectbar'>
+                                    <option> Everyone </option>
+                                    <option> Player </option>
+                                </select>
+                            </div>
+                            <textarea type="text" className='chatbox' placeholder='Type your message here...' >
+                            </textarea>
+                            <button className='sendBtn'></button>
+                        </div>
             </div>
         </div>
     )
