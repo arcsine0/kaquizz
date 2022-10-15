@@ -116,6 +116,87 @@ button {
 }
 
 /* ----------------------------------------
+ *  CHAT
+ * ---------------------------------------- */
+
+ .chat {
+    width: 500px;
+    background-color: var(--white-color);
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.chatheader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    padding: 15px;
+}
+
+.chathistory {
+    height: fit-content;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px;
+}
+
+/*.chatmessage {
+    background-color: var(--white-color);
+    border-radius: 12px;
+    padding: 16px;
+} - for chat messages*/ 
+
+.chatboxrow {
+    position: fixed;
+    bottom: 10px;
+    padding: 2px;
+}
+
+.sendto {
+    padding: 10px;
+    border-radius: 24px;
+}
+
+.selectbar {
+    width: 75%;
+    height: 75%;
+    padding: 10px;
+}
+
+.chatbox {
+    width: 400px;
+    height: 200px;
+    padding: 12px;
+    border-radius: 8px;
+    resize: none;
+}
+
+.sendBtn {
+    outline: none;
+    background-image: url(.././images/SendMessage.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 1px;
+    right: 15px;
+    bottom: 23px;
+}
+
+/* ----------------------------------------
  *  GAME LOBBY
  * ---------------------------------------- */
 
