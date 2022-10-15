@@ -82,6 +82,11 @@ io.on('connection', (socket) => {
 
     });
 
+    socket.on('save', (data) => {
+        console.log(data)
+        io.in(roomID).emit('save', data)
+    })
+
     socket.on('start', () => {
         console.log(`${roomID} is starting...`)
         io.in(roomID).emit('start')

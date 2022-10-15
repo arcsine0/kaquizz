@@ -34,11 +34,13 @@ function Main() {
 
     const [questionCount, setQuestionCount] = useState(0)
 
+    const [data, setData] = useState([])
+
     // i made this one for testing purposes, don't mind
     // const [mode, setMode] = useState('create');
 
     // test data
-    var sessionData = {"timer": 10, "questions": ["What is 1+1?", "How stupid am I?", "What the Huh?"], "choices": [["2", "11", "idk", "none of the above"], ["Yes", "No", "Maybe", "A Little"], ["Indeed", "I know right", "Yup", "True"]], "answers": ["2", "Yes", "I know right"]}
+    var sessionData = {"timer": 10, "questions": ['def_name'], "choices": [], "answers": []}
     sessionStorage.setItem('sessionData', JSON.stringify(sessionData))
 
     var scores = [["player1", 1000], ["player2", 2000], ["player3", 50]]
@@ -59,6 +61,11 @@ function Main() {
 
     socket.on('userData', (data) => {
         setPlayersList(data);
+    })
+
+    socket.on('save', (data) => {
+        setData(data)
+        sessionStorage.setItem('sessionData', data)
     })
 
     socket.on('start', () => {
@@ -104,6 +111,10 @@ function Main() {
         navigate('/lobby')
     }
 
+    function saveData(data) {
+        socket.emit('save', data)
+    }
+
     function start() {
         socket.emit('start')
     }
@@ -121,8 +132,8 @@ function Main() {
         <Routes>
             <Route exact path='/' element={<Lobby toLobby={(name, id) => join(name, id)} />} />
             <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} start={() => start()} />} />
-            <Route exact path='/editor' element={<Editor />} />
-            <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} />} />
+            <Route exact path='/editor' element={<Editor saveData={(data) => saveData(data)} />} />
+            <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} data={data} />} />
             <Route exact path='/placement' element={<RoundPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
         </Routes>
 

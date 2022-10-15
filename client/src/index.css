@@ -77,11 +77,6 @@ label {
   font-size: 4em;
 }
 
-
-/* ----------------------------------------
- *  BUTTON
- * ---------------------------------------- */
-
 button {
   border-radius: 12px;
   padding: 12px; 
@@ -91,7 +86,7 @@ button {
   font-size: 1.2em;
 }
 
-/* .dragIcon {
+.dragIcon {
   width: 30px;
   display: block;
   fill: white;
@@ -108,7 +103,7 @@ button {
   height: 20px;
   margin-top: 3px;
   margin-left: -20px;
-} */
+}
 
 .violet-btn {
   background-color: var(--violet-color);
@@ -118,21 +113,10 @@ button {
   background-color: var(--red-color);
 }
 
-
-.yellow-btn {
-  background-color: var(--yellow-color);
-}
-
-
-/* ----------------------------------------
- *  ICONS
- * ---------------------------------------- */
- 
 .large-icon {
   font-size: 2.2em;
   display: block;
 }
-
 
 .smaller-icon {
   font-size: 1.2em;
@@ -148,10 +132,6 @@ button {
 .white-icon {
   color: var(--white-color);
 }
-
-/* ----------------------------------------
- *  COLORS
- * ---------------------------------------- */
 
 .yellow-bg {
   background-color: #cd972e;
@@ -183,54 +163,4 @@ button {
 
 .green-border {
   border: solid 3px #46944e;
-}
-
-/* ----------------------------------------
- *  TABLE
- * ---------------------------------------- */
-
-table {
-  min-width: 400px;
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
-}
-
-tr {
-  border-radius: 10px;
-}
-
-thead tr {
-  font-size: 14px;
-} 
-
-tbody tr {
-  background-color: var(--white-color);
-  font-size: 20px;
-}
-
-tbody tr .currentPlayer {
-  background-color: var(--violet-color);
-}
-
-tbody tr td {
-  border: 10px solid #f3f3f3;
-  border-right: 0;
-  border-left: 0;
-}
-
-td:first-child,
-th:first-child {
-  border-radius: 10px 0 0 10px;
-  
-}
-
-td:last-child,
-th:last-child {
-  border-radius: 0 10px 10px 0;
-}
-
-.currentPlayer {
-  background-color: var(--violet-color);
-  color: var(--white-color);
 }

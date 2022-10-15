@@ -16,7 +16,7 @@ export default function Quiz(props) {
 
     const submitAnswer = props.submitAnswer
 
-    const sessionData = sessionStorage.getItem('sessionData')
+    const sessionData = props.data
     const data = JSON.parse(sessionData)
     
     const navigate = useNavigate()

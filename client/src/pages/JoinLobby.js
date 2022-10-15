@@ -29,7 +29,7 @@ export default function JoinLobby(props) {
         if (role === 'host') {
             return (
                 <div className='hostControls'>
-                    <button type="button" class="red-btn" onClick={() => start()}>Edit Quiz</button>
+                    <button type="button" class="red-btn" onClick={() => { navigate('/editor') }}>Edit Quiz</button>
                     <button type="button" class="yellow-btn" onClick={() => start()}>Start Game</button>
                 </div>
             )
