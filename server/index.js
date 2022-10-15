@@ -100,7 +100,7 @@ io.on('connection', (socket) => {
         socket.data.score += data.score
         
         console.log(socket.data.username, socket.data.score)
-        io.in(roomID).emit('scores', {"name": socket.data.username, "score": socket.data.score})
+        io.in(roomID).emit('scores', 'test')
     })
 
     socket.on('next', () => {

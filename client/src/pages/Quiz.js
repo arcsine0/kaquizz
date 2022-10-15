@@ -52,8 +52,6 @@ export default function Quiz(props) {
             qPoint = 0
         }
 
-        console.log(qPoint)
-
         // console.log(seconds)
 
         const score = qPoint

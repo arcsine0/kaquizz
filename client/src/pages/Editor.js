@@ -49,7 +49,13 @@ export default function Editor(props) {
     }
 
     function add() {
-        data.questions.push('temp_name')
+        // data.questions.push('temp_name')
+        setData((data) => ({
+            'timer': 5,
+            'questions': [...data.questions, 'temp_name'],
+            'choices': [...data.choices],
+            'answers': [...data.answers]
+        }))
         setQuestions(data.questions)
     }
 
@@ -109,27 +115,19 @@ export default function Editor(props) {
                         <div className="choicesEditor">
                             <div className='choiceEditorCard yellow-border'>
                                 <input type="text" id="choice" name='choice_0' value={choiceA} placeholder="Add answer 1" onChange={(e) => setChoiceA(e.target.value)}></input>
-                                <div className="correctToggleBtn correct">
-                                    <i class="ri-checkbox-circle-fill large-icon"></i>
-                                </div>
+                                
                             </div>
                             <div className='choiceEditorCard red-border'>
                                 <input type="text" id="choice" name='choice_1' value={choiceB} placeholder="Add answer 2" onChange={(e) => setChoiceB(e.target.value)}></input>
-                                <div className="correctToggleBtn wrong">
-                                    <i class="ri-close-circle-fill large-icon"></i>
-                                </div>
+                                
                             </div>
                             <div className='choiceEditorCard green-border'>
                                 <input type="text" id="choice" name='choice_2' value={choiceC} placeholder="Add answer 3" onChange={(e) => setChoiceC(e.target.value)}></input>
-                                <div className="correctToggleBtn wrong">
-                                    <i class="ri-close-circle-fill large-icon"></i>
-                                </div>
+                                
                             </div>
                             <div className='choiceEditorCard blue-border'>
                                 <input type="text" id="choice" name='choice_3' value={choiceD} placeholder="Add answer 4" onChange={(e) => setChoiceD(e.target.value)}></input>
-                                <div className="correctToggleBtn wrong">
-                                    <i class="ri-close-circle-fill large-icon"></i>
-                                </div>
+                                
                             </div>    
                         </div>
                     </div>

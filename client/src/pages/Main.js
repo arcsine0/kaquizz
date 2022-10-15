@@ -13,7 +13,6 @@ import JoinLobby from './JoinLobby';
 import Lobby from './Lobby';
 import Editor from './Editor';
 import Quiz from './Quiz';
-import QuizQuestion from './QuizQuestion';
 import RoundPlacement from './RoundPlacement';
 import FinalPlacement from './Winners'
 import Leaderboard from './Leaderboard';
@@ -46,7 +45,7 @@ function Main() {
     var sessionData = {"timer": 10, "questions": ['def_name'], "choices": [], "answers": []}
     sessionStorage.setItem('sessionData', JSON.stringify(sessionData))
 
-    var scores = [["player1", 1000], ["player2", 2000], ["player3", 50]]
+    var scores = [["test1", 1000], ["test2", 2000], ["test3", 50]]
     sessionStorage.setItem('scores', JSON.stringify(scores))
 
     // this state hook is for receiving all player data inside the room from the server
@@ -77,12 +76,13 @@ function Main() {
     })
 
     socket.on('scores', (data) => {
-        // console.log(data)
-        // const scores = sessionStorage.getItem('scores')
-        // var scoreList = JSON.parse(scores)
-        // scoreList[0][data.name] = data.score
+        console.log(data)
+        
+        const scores = sessionStorage.getItem('scores')
+        var scoreList = JSON.parse(scores)
+        scoreList[0][data.name] = data.score
 
-        // sessionStorage.setItem('scores', JSON.stringify(scoreList))
+        sessionStorage.setItem('scores', JSON.stringify(scoreList))
 
     })
 
