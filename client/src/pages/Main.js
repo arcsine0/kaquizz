@@ -72,15 +72,17 @@ function Main() {
     })
 
     socket.on('start', () => {
+        setQuestionCount(0)
         navigate('/quiz')
     })
 
     socket.on('scores', (data) => {
-        const scores = sessionStorage.getItem('scores')
-        var scoreList = JSON.parse(scores)
-        scoreList[0][data.name] = data.score
+        // console.log(data)
+        // const scores = sessionStorage.getItem('scores')
+        // var scoreList = JSON.parse(scores)
+        // scoreList[0][data.name] = data.score
 
-        sessionStorage.setItem('scores', JSON.stringify(scoreList))
+        // sessionStorage.setItem('scores', JSON.stringify(scoreList))
 
     })
 
@@ -136,7 +138,7 @@ function Main() {
             <Route exact path='/' element={<Lobby toLobby={(name, id) => join(name, id)} />} />
             <Route exact path='/lobby' element={<JoinLobby players={playersList} code={roomID} start={() => start()} />} />
             <Route exact path='/editor' element={<Editor saveData={(data) => saveData(data)} />} />
-            <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} data={data} />} />
+            <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} data={data} name={userName} socket={socket} />} />
             <Route exact path='/placement' element={<RoundPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
             <Route exact path='/winners' element={<FinalPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
             <Route exact path='/leaderboard' element={<Leaderboard next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />

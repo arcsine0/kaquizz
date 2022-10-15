@@ -82,6 +82,10 @@ io.on('connection', (socket) => {
 
     });
 
+    socket.on('test', (data) => {
+        console.log(data)
+    })
+
     socket.on('save', (data) => {
         console.log(data)
         io.in(roomID).emit('save', data)

@@ -9,10 +9,14 @@ import './Main.css'
 
 export default function Quiz(props) {
     const count = props.count
+    const socket = props.socket
+    const name = props.name
     
     const [timerCount, setTimerCount] = useState(0)
     const [answer, setAnswer] = useState("")
     const [preview, setPreview] = useState(false)
+
+    const [start, setStart] = useState(0)
 
     const submitAnswer = props.submitAnswer
 
@@ -34,18 +38,27 @@ export default function Quiz(props) {
         setAnswer(toString(id))
         setPreview(false)
 
+        const end = Date.now()
+        const elapsed = Math.floor((end - start) / 1000)
+        const max = 1000
+
         var qPoint = 0
 
-        if (data.choices[count][id] === data.answers[count]) {
-            qPoint = 1000
+        if (id === data.answers[count]) {
+            if (elapsed < data.timer) {
+                qPoint = max - ((elapsed  * max) / data.timer)
+            }
         } else {
             qPoint = 0
         }
+
+        console.log(qPoint)
 
         // console.log(seconds)
 
         const score = qPoint
         submitAnswer(score)
+        // socket.emit('answered', {'name': name, 'score': score})
         
         if ((count + 1) === data.questions.length) {
             navigate('/leaderboard')
@@ -55,7 +68,6 @@ export default function Quiz(props) {
     }
 
     function DisplayQuestion() {
-
         if (preview === false) {
             setTimeout(() => {
                 setPreview(true)
@@ -66,7 +78,7 @@ export default function Quiz(props) {
                 </div>
             )
         } else {
-            // start()
+            setStart(Date.now())
             return (
                 <div>
                     <QuizQuestion current={count} max={data.questions.length} question={data.questions[count]} choices={data.choices[count]} submitAnswer={(id) => validateAnswer(id)} />

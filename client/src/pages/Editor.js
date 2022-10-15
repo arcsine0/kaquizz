@@ -34,7 +34,7 @@ export default function Editor(props) {
         console.log(data)
         console.log(data.questions)
         setData((data) => ({
-            'timer': timer,
+            'timer': 5,
             'questions': insert(data.questions, questionName),
             'choices': insert(data.choices, [choiceA, choiceB, choiceC, choiceD]),
             'answers': insert(data.answers, answer)
@@ -62,6 +62,8 @@ export default function Editor(props) {
             setChoiceB(data.choices[id][1])
             setChoiceC(data.choices[id][2])
             setChoiceD(data.choices[id][3])
+            setAnswer(data.answers)
+            setTimer(data.timer)
         }
     }
 
@@ -149,7 +151,7 @@ export default function Editor(props) {
                                     <i class="ri-checkbox-circle-fill smaller-icon"></i>     
                                     <p>Correct Answer:</p>
                                 </label>
-                                <select name='answer' onChange={(e) => setAnswer(e.target.value)}>
+                                <select name='answer' value={answer} onChange={(e) => setAnswer(e.target.value)}>
                                     <option value="0">Orange</option>
                                     <option value="1">Red</option>
                                     <option value="2">Green</option>
@@ -162,7 +164,7 @@ export default function Editor(props) {
                                     <i class="ri-time-fill smaller-icon"></i>     
                                     <p>Time Limit:</p>
                                 </label>
-                                <select name='timer' onChange={(e) => setTimer(e.target.value)}>
+                                <select name='timer' value={timer} onChange={(e) => setTimer(e.target.value)}>
                                     <option value="5">5</option>
                                     <option value="10">10</option>
                                     <option value="15">15</option>
@@ -173,8 +175,7 @@ export default function Editor(props) {
                         
                         <div className="quizSettingsButtons">
                             <button type="button" className="red-btn">Delete</button>
-                            <button type="button" className="violet-btn">Duplicate</button>
-                            <button type="button" className="yellow-btn" onClick={() => save()} >Save</button>
+                            <button type="button" className="violet-btn" onClick={() => save()}>Save</button>
                         </div>
                     </div>
                 </div>

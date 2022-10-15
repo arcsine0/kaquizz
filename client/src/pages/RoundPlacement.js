@@ -12,7 +12,6 @@ export default function RoundPlacement(props) {
 
     const scores = sessionStorage.getItem('scores')
     const role = sessionStorage.getItem('role')
-    console.log(JSON.parse(scores).player1)
 
     function Waiting() {
         if (role === 'host') {

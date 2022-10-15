@@ -2,8 +2,10 @@ import React, { useMemo } from 'react'
 import Table from 'react-bootstrap/Table'
 
 export const WinnersTable = (props) => {
-    const data = props.data
-    console.log(data)
+  const data = props.data
+
+  data.sort((a, b) => b[1] - a[1])
+  console.log(data)
 
   return (
 
@@ -16,21 +18,15 @@ export const WinnersTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        <tr className='currentPlayer'>
-          <td>1st</td>
-          <td>Player 1</td>
-          <td>200</td>
-        </tr>
-        <tr>
-          <td>2nd</td>
-          <td>Player 2</td>
-          <td>300</td>
-        </tr>
-        <tr>
-          <td>2nd</td>
-          <td>Player 2</td>
-          <td>300</td>
-        </tr>
+        {data.map((e, i) => {
+          return (
+            <tr>
+              <td>{i + 1}</td>
+              <td>{e[0]}</td>
+              <td>{e[1]}</td>
+            </tr>
+          )
+        })}
       </tbody>
     </Table>
   )
