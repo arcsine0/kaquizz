@@ -17,13 +17,15 @@ export default function RoundPlacement(props) {
     function Waiting() {
         if (role === 'host') {
             return (
-                <div className={`waitingText ${role=="host" ? "hostText" : ""}`}>
+                <div className={'waitingText hostText'}>
                     <h3 onClick={() => next()}>Click anywhere to start the next round...</h3>
                 </div>
             )
         } else {
             return (
+            <div className={'waitingText'}>
                 <h3>Waiting for host to start the next round...</h3>
+            </div>
             )
         }
     }

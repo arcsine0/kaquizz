@@ -15,8 +15,11 @@ import Editor from './Editor';
 import Quiz from './Quiz';
 import QuizQuestion from './QuizQuestion';
 import RoundPlacement from './RoundPlacement';
+import FinalPlacement from './Winners'
+import Leaderboard from './Leaderboard';
 
 import logoImg from '.././images/Logo.png';
+
 
 // socket.io is for the websocket connection implementation
 // i've commented these for now so that your side doesn't error out if the server is running or not
@@ -135,6 +138,8 @@ function Main() {
             <Route exact path='/editor' element={<Editor saveData={(data) => saveData(data)} />} />
             <Route exact path='/quiz' element={<Quiz submitAnswer={(score) => submitAnswer(score)} count={questionCount} data={data} />} />
             <Route exact path='/placement' element={<RoundPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
+            <Route exact path='/winners' element={<FinalPlacement next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
+            <Route exact path='/leaderboard' element={<Leaderboard next={() => nextQuestion()} data={JSON.parse(sessionStorage.getItem('scores'))} />} />
         </Routes>
 
     )

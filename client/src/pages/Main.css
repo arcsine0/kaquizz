@@ -24,6 +24,13 @@ body {
     background-size: cover;
 }
 
+.winner-bg {
+    height: 100vh;
+    background-image: url(.././images/Background3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 /* ----------------------------------------
  *  REUSABLE STYLES
@@ -31,10 +38,6 @@ body {
 
 .logo {
     height: 100%;
-}
-
-.title {
-    margin-bottom: 40px;
 }
 
 button {
@@ -84,10 +87,6 @@ button {
     font-size: 5.4rem;
 }
 
-.hostText {
-    background-color: #a541a2 !important;
-}
-
 /* ----------------------------------------
  *  HOMEPAGE
  * ---------------------------------------- */
@@ -110,6 +109,10 @@ button {
 
 .homeContainer .logo {
     width: 250px;
+}
+
+.homeContainer .title {
+    margin-bottom: 32px;
 }
 
 /* ----------------------------------------
@@ -310,16 +313,20 @@ button {
     color: white;
 }
 
+
 .placementContainer {
     background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 32px auto;
     padding: 16px;
     border-radius: 12px;
-    max-width: 50vw;
+    width: 60vw;
 }
 
 .waitingText {
-    background-color: #181845;
     color: white;
     max-height: 150px;
     margin: 0 auto;
@@ -351,8 +358,17 @@ button {
 }
 
 .editor-bg .exitButton {
-    position: relative;
     background-color: var(--violet-color);
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px 24px 12px 32px;
+    border-radius: 0 40px 40px 0;
+    position: relative;
+    right: 12px;
     top: 0px;
 }
 
@@ -517,4 +533,58 @@ button {
     margin-top: 8px;
 }
 
+/* ----------------------------------------
+ *  WINNER SCREEN
+ * ---------------------------------------- */
 
+.winnerScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.congratulationsText span {
+    font-weight: 700;
+}
+
+.congratulationsText {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.winnerScreen .exitButton {
+    background-color: var(--violet-color);
+    position: absolute;
+    top: 32px;
+    left: 0;
+}
+
+.winnersContainer {
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 32px auto;
+    padding: 16px;
+    border-radius: 12px;
+    width: 60vw;
+}
+
+.winnersContainer .logo {
+    height: 150px;
+}
+
+.winnersContainer .title {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.winnersButton {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    padding: 16px 64px;
+    gap: 18px;
+}
