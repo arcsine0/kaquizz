@@ -47,7 +47,7 @@ export default function FinalPlacement(props) {
                 <WinnersTable data={JSON.parse(scores)} />
                 <div className='winnersButton'>
                     <button type="button" className="red-btn" onClick={() => { navigate('/leaderboard') }}>Show Leaderboard</button>
-                    <button type="button" className="yellow-btn" onClick={() => { navigate('/lobby') }}>Return to Lobby</button>
+                    <button type="button" className="violet-btn" onClick={() => { navigate('/lobby') }}>Return to Lobby</button>
                 </div>
             </div>
             

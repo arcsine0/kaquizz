@@ -501,7 +501,7 @@ button {
 }
 
 .addQuestion-btn {
-    border: solid 2px var(--violet-color);
+    border: solid 4px var(--violet-color);
     border-radius: 15px;
     display: flex;
     color: var(--violet-color);
@@ -546,6 +546,7 @@ button {
 }
 
 .choiceEditorCard {
+    border-width: 8px;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -557,7 +558,7 @@ button {
 .choiceEditorCard input {
     height: 100%;
     border: none;
-    border-radius: 12px 0px 0px 12px;
+    border-radius: 12px;
 }
 
 .choiceEditorCard .correctToggleBtn {
@@ -612,6 +613,11 @@ button {
 .quizSettings button {
     font-size: 1em;
     margin-top: 8px;
+}
+
+.quizSettingsButtons {
+    position: relative;
+    top: -70px;
 }
 
 /* ----------------------------------------
