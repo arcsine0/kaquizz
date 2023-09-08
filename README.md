@@ -1,4 +1,4 @@
-# This entire project is run on React
+# This entire project is running on React
 on each file i have commented a guide for how to use and where to put codes  
 if i didn't, don't be shy to ask
 
