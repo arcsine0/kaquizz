@@ -17,11 +17,9 @@ npm i
 ```
 that's it
 
-# How to start the shi, because x3
+# How to actually start it
 just do
 ```
 npm start
 ```
 to exit, just do `CTRL + C`
-
-anything else just ask me.
